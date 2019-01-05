@@ -3,6 +3,8 @@ package main
 import "os"
 
 func main() {
-	//slap()
+	slap()
 	lissajous(os.Stdout)
+	PrintInput()
+	CountDublicates()
 }

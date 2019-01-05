@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/gif"
 	"io"
 	"math"
 	"math/rand"
+	"os"
 )
 
 var palette = []color.Color{color.White, color.Black}
@@ -41,4 +43,34 @@ func lissajous(out io.Writer) {
 	}
 	gif.EncodeAll(out, &anim)
 
+}
+
+func slap() {
+	var a, b = 1, 3
+	fmt.Println(a)
+	fmt.Println(b)
+	a, b = b, a
+	fmt.Println(a)
+	fmt.Println(b)
+}
+
+func PrintInput() {
+	s, sep := "", ""
+	for _, arg := range os.Args[1:] {
+		s += sep + arg
+		sep = " "
+	}
+	fmt.Println(s)
+}
+
+func CountDublicates() {
+	counts := make(map[string]int)
+	for _, arg := range os.Args[1:] {
+		counts[arg]++
+	}
+	for line, n := range counts {
+		if n > 1 {
+			fmt.Println(n, line)
+		}
+	}
 }
